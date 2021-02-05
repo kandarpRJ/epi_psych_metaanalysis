@@ -45,6 +45,10 @@ Idents(combined) <- "celltype.condition"
 
 response <- FindMarkers(combined, ident.1 = suicide_celltype, ident.2 = control_celltype, verbose = FALSE) ## Replace suicide_celltype and control_celltype with appropriate Idents (names)
 
+features = c("METTL3", "METTL14", "WTAP", "METTL16", "RBM15", "CBLL1", "YTHDC1", 
+	   "YTHDC2", "YTHDF1", "YTHDF2", "YTHDF3", "FMR1", "IGF2BP1", "IGF2BP2", "IGF2BP3", "FTO", "ALKBH5")
+
+
 AvgExp_GenesOfInterest<-AverageExpression(combined, assays = "RNA", features = features)
 
 new_dat<-AvgExp_GenesOfInterest$RNA[,c("Control_Astros_1", "Control_Astros_2", "Suicide_Astros_2", "Control_Astros_3", "Suicide_Astros_3", "Control_Endo", "Suicide_Endo",
@@ -62,12 +66,11 @@ colnames(cat_names)<-c("Condition", "Cell type")
 ha<-HeatmapAnnotation(df=cat_names)
 
 h<-Heatmap(as.matrix(new_dat), cluster_columns = FALSE, cluster_rows = FALSE, top_annotation = ha,
-           row_split = data.frame(c(rep("Writers", 10), rep("Readers", 9), rep("Erasers", 2))),
+           row_split = data.frame(c(rep("Writers", 6), rep("Readers", 9), rep("Erasers", 2))),
            column_split = cat_names$`Cell type`, column_names_gp = gpar(fontsize = 9),
            heatmap_legend_param = list (title="Avg. gene expression", direction="horizontal", title_position="topcenter"))
 
 png("m6a_machine_heatmap_subtype_new.png", res = 600, height = 4000, width = 7500)
 draw(h, heatmap_legend_side="bottom")
 dev.off()
-
 
