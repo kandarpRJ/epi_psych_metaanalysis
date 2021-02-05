@@ -1,5 +1,5 @@
 ##########################################################################################################################################
-#### Acknowledgement to Malosree Maitra, PhD Student, Gustavo Turecki Lab for providing the scripts used for analysis of this dataset ####
+## Acknowledgement to Malosree Maitra, PhD Student, Gustavo Turecki Lab for providing partial scripts used for analysis of this dataset ##
 ##########################################################################################################################################
 
 library(Matrix)
