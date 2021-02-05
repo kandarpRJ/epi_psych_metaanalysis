@@ -83,30 +83,34 @@ p19<-makeplot(cblm, "GSE35974_CBLM.txt", "CBLM_Mix")
 
 ## MDD CDF plot
 
-pg<-plot_grid(pl(p2) + theme(legend.position="none"), 
-              pl(p3) + theme(legend.position="none"),
-              pl(p6) + theme(legend.position="none"),
-              pl(p7) + theme(legend.position="none"),
-              pl(p9) + theme(legend.position="none"),
-              pl(p8) + theme(legend.position="none"),
-              pl(p15) + theme(legend.position="none"),
-              pl(p16) + theme(legend.position="none"),
-              pl(p4) + theme(legend.position="none"),
-              pl(p5) + theme(legend.position="none"),
-              pl(p11) + theme(legend.position="none"),
-              pl(p13) + theme(legend.position="none"),
-              pl(p14) + theme(legend.position="none"),
-              pl1(p10) + theme(legend.position="none"),
-              pl(p19) + theme(legend.position="none"), ncol = 2, labels = "AUTO", label_size = 12 )
+pg1<-plot_grid(pl(p2) + theme(legend.position="none"), 
+          pl(p3) + theme(legend.position="none"),
+          pl(p6) + theme(legend.position="none"),
+          pl(p7) + theme(legend.position="none"),
+          pl(p9) + theme(legend.position="none"),
+          pl(p8) + theme(legend.position="none"),
+          pl(p15) + theme(legend.position="none"),
+          pl(p16) + theme(legend.position="none"),
+          pl(p4) + theme(legend.position="none"),
+          pl(p5) + theme(legend.position="none"), ncol = 2, labels = "AUTO", label_size = 12 )
+pg2<-plot_grid(pl(p11) + theme(legend.position="none"),
+          pl(p13) + theme(legend.position="none"),
+          pl(p14) + theme(legend.position="none"),
+          pl1(p10) + theme(legend.position="none"),
+          pl(p19) + theme(legend.position="none"), ncol = 2, labels = "AUTO", label_size = 12 )
 
 legend <- get_legend(
+  # create some space to the left of the legend
   pl(p2) + theme(legend.box.margin = margin(0, 0, 0, 12))
 )
 
-png("mdd_cdf_grid.png", res = 300, height = 6000, width = 3000)
-plot_grid(pg, legend, rel_widths = c(3, .4))
+png("figure5.png", res = 300, height = 6000, width = 3000)
+plot_grid(pg1, legend, rel_widths = c(3, .4))
 dev.off()
 
+png("figureS1.png", res = 300, height = 6000, width = 3000)
+plot_grid(pg2, legend, rel_widths = c(3, .4))
+dev.off()
 
 ## PTSD CDF plot
 
@@ -117,11 +121,6 @@ legendptsd <- get_legend(
   pl(p17) + theme(legend.box.margin = margin(0, 0, 0, 12))
 )
 
-png("ptsd_cdf_grid.png", res = 300, height = 3000, width = 6000)
+png("figure7.png", res = 300, height = 3000, width = 6000)
 plot_grid(pgptsd, legend, rel_widths = c(3, .4))
 dev.off()
-
-
-
-
-
