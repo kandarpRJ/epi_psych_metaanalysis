@@ -70,7 +70,7 @@ h<-Heatmap(as.matrix(new_dat), cluster_columns = FALSE, cluster_rows = FALSE, to
            column_split = cat_names$`Cell type`, column_names_gp = gpar(fontsize = 9),
            heatmap_legend_param = list (title="Avg. gene expression", direction="horizontal", title_position="topcenter"))
 
-png("m6a_machine_heatmap_subtype_new.png", res = 600, height = 4000, width = 7500)
+png("figure3.png", res = 600, height = 4000, width = 7500)
 draw(h, heatmap_legend_side="bottom")
 dev.off()
 
